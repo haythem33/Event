@@ -1,0 +1,21 @@
+<div class="body">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="box">
+    <img src="./../../assets/image/user.png" class="user">
+  <h1>Register</h1>
+  <input formControlName="nameValue" [ngClass]="{ 'is-invalid': submitted && f.nameValue.errors }" type="text" placeholder="Name">
+  <div *ngIf="registerForm.touched">
+    <div *ngIf="!registerForm.controls.nameValue.errors.minlength" class="text-danger">Name Required </div>
+  </div>
+        <input  type="text" placeholder="Lastname">
+        <input formControlName="emailValue"   type="email"  [ngClass]="{ 'is-invalid': submitted && f.emailValue.errors }" placeholder="Email">
+  <div *ngIf="registerForm.touched">
+  <div *ngIf="registerForm.controls.emailValue.invalid" class="text-danger">Email Invalid</div>
+</div>
+  <input formControlName="passwordValue"   type="password"   [ngClass]="{ 'is-invalid': submitted && f.passwordValue.errors }" placeholder="Password">
+  <div *ngIf="registerForm.touched">
+  <div *ngIf="registerForm.controls.passwordValue.invalid" class="text-danger">Invalid Password<br>Password Must have at least 6 caractere</div>
+  </div>
+  <input  type="password"  placeholder="Confirm Password">
+  <button  (click)="onSubmit()" type="button" value="ENTER">Submit</button>
+  </form>
+  </div>
