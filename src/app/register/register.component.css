@@ -1,69 +1,24 @@
-.body {
-  background: url('./../../assets/image/bg.jpg')  center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  max-height: 100%;
-  min-height: 100vh;
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.login-block{
+  background: #DE6262;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  float:left;
+  width:100%;
+  padding : 50px 0;
 }
-.box{
-  width: 357px;
-  padding: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #191919ad;
-  text-align: center;
-}
-.box h1 {
-  color: white;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.box input[type = "text"],.box input[type = "password"],.box input[type = "email"]{
-border: 0;
-background: none;
-display: block;
-margin: 20px auto;
-text-align: center;
-border: 2px solid #07e0c9;
-padding: 14px 10px;
-width: 200px;
-outline: none;
-color: white;
-border-radius: 24px;
-transition: 0.25s;
-}
-.box input[type = "text"]:focus,.box input[type = "password"]:focus,.box input[type = "email"]:focus {
-  width: 280px;
-  border-color: #2ecc71;
-}
-.box button {
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #07e0c9;
-  padding: 14px 40px;
-cursor: pointer;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-}
-.box button:hover{
-    background: #2ecc71;
-
-}
-.user {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: absolute;
-  top: calc(-100px/2);
-  left: calc(50% - 50px);
-}
+.banner-sec{background:url(https://static.pexels.com/photos/33972/pexels-photo.jpg)  no-repeat left bottom; background-size:cover;  border-radius:10px; padding:0;}
+.container{background:#fff; border-radius: 10px 0 0 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.carousel-inner{border-radius:10px 0 0 10px;}
+.carousel-caption{text-align:left; left:5%;}
+.login-sec{padding: 50px 30px; position:relative;}
+.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#FEB58A;}
+.login-sec .copy-text a{color:#E36262;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
+.banner-text h2{color:#fff; font-weight:600;}
+.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
+.banner-text p{color:#fff;}

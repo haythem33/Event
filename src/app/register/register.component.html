@@ -1,21 +1,53 @@
-<div class="body">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="box">
-    <img src="./../../assets/image/user.png" class="user">
-  <h1>Register</h1>
-  <input formControlName="nameValue" [ngClass]="{ 'is-invalid': submitted && f.nameValue.errors }" type="text" placeholder="Name">
-  <div *ngIf="registerForm.touched">
-    <div *ngIf="!registerForm.controls.nameValue.errors.minlength" class="text-danger">Name Required </div>
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 banner-sec">
+        <app-slider></app-slider>
+      </div>
+      <div class="col-md-4 login-sec">
+        <h2 class="text-center">Register Now</h2>
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label class="text-uppercase">Firstname</label>
+            <input formControlName="firstnameValue" [ngClass]="{ 'is-invalid': submitted && f.firstnameValue.errors }" type="text" class="form-control" placeholder="First name...">
+            <div *ngIf="registerForm.touched">
+              <div *ngIf="registerForm.controls.firstnameValue.invalid" class="text-danger">First name Required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label  class="text-uppercase">Lastname</label>
+            <input formControlName="lastnameValue" [ngClass]="{ 'is-invalid': submitted && f.lastnameValue.errors }" type="text" class="form-control" placeholder="Last name...">
+            <div *ngIf="registerForm.touched">
+              <div *ngIf="registerForm.controls.lastnameValue.invalid" class="text-danger">Last name required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Email1" class="text-uppercase">Email</label>
+            <input formControlName="emailValue" [ngClass]="{ 'is-invalid': submitted && f.emailValue.errors }" type="text" name="email" id="Email1" class="form-control" placeholder="Email...">
+            <div *ngIf="registerForm.touched">
+              <div *ngIf="registerForm.controls.emailValue.invalid" class="text-danger">Invalid email</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Password" class="text-uppercase">Password</label>
+            <input formControlName="passwordValue" [ngClass]="{ 'is-invalid': submitted && f.passwordValue.errors }" type="password" name="password" id="Password" class="form-control" placeholder="Password...">
+            <div *ngIf="registerForm.touched">
+              <div *ngIf="registerForm.controls.passwordValue.invalid" class="text-danger">Invalid Password<br>Password Must have at least 6 caractere</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="text-uppercase">Password confirmation</label>
+            <input formControlName="cpasswordValue" [ngClass]="{ 'is-invalid': submitted && f.cpasswordValue.errors }" type="password" class="form-control" placeholder="Password...">
+            <div *ngIf="registerForm.touched">
+              <div *ngIf="registerForm.controls.cpasswordValue.invalid" class="text-danger">Invalid Password<br>Password Must have at least 6 caractere</div>
+            </div>
+          </div>
+          <div class="form-check">
+            <button type="submit" class="btn btn-login float-right" (click)="onSubmit()">Submit</button>
+          </div>
+        </form>
+        <div class="copy-text">Created with <i class="fa fa-heart"></i> by Amen allah, Haythem and Seif</div>
+      </div>
+    </div>
   </div>
-        <input  type="text" placeholder="Lastname">
-        <input formControlName="emailValue"   type="email"  [ngClass]="{ 'is-invalid': submitted && f.emailValue.errors }" placeholder="Email">
-  <div *ngIf="registerForm.touched">
-  <div *ngIf="registerForm.controls.emailValue.invalid" class="text-danger">Email Invalid</div>
-</div>
-  <input formControlName="passwordValue"   type="password"   [ngClass]="{ 'is-invalid': submitted && f.passwordValue.errors }" placeholder="Password">
-  <div *ngIf="registerForm.touched">
-  <div *ngIf="registerForm.controls.passwordValue.invalid" class="text-danger">Invalid Password<br>Password Must have at least 6 caractere</div>
-  </div>
-  <input  type="password"  placeholder="Confirm Password">
-  <button  (click)="onSubmit()" type="button" value="ENTER">Submit</button>
-  </form>
-  </div>
+</section>
