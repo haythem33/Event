@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { from } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,22 +13,22 @@ export class LoginComponent implements OnInit {
   password;
   message;
   imageUser: File = null;
-  constructor( private http: HttpClient, public router: Router) {  }
+  constructor(  public router: Router, public apiService: ApiService ) {  }
   ngOnInit() {
   }
-  /*loginBtn() {
+  loginBtn() {
     const myObj = { email: this.email, password: this.password };
     this.message = '';
     this.apiService.loginApi(myObj).subscribe(res => {
       console.log(res);
-      if (res.json().message === 'ok') {
-        this.router.navigateByUrl('/');
-      } else {
-        this.message = res.json().message;
-        console.log(this.message);
-      }
+       if (res.json().message === 'OK') {
+         this.router.navigateByUrl('/home');
+       } else {
+         this.message = res.json().message;
+         console.log(this.message);
+       }
     });
-  }*/
+  }
 }
 
 

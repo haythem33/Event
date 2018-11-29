@@ -7,6 +7,17 @@ var Candidat = require('./models/Candidat');
 const bcrypt = require('bcrypt');
 var cors = require('cors');
 const app = express();
+var multer = require('multer');
+const morgan = require('morgan');
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+var upload = multer({storage: storage});
 
 var db = mongoose.connect('mongodb://localhost:27017/eventAuthentication', {
   useNewUrlParser: true,
@@ -20,29 +31,45 @@ var db = mongoose.connect('mongodb://localhost:27017/eventAuthentication', {
 });
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 app.get('/', (req, res) => {
   res.send('helloooo');
 });
+app.post('/fileUpload', upload.single('image'), (req, res, next) => {
+
+      insertDocuments(db, 'public/images/uploads/' + req.body.imagePath, () => {
+          db.close();
+          res.json({message: 'File uploaded successfully'});
+      });
+  });
+var insertDocuments = function(db, filePath, callback) {
+
+  insertOne({'imagePath' : filePath }, (err, result) => {
+      assert.equal(err, null);
+      callback(result);
+  });
+}
 app.post('/login', async (req, res) => {
   resultLogin = await Candidat.findOne({email: req.body.email});
   if (!resultLogin) {
     res.send({message: 'user not found'});
   }
-  if (!bcrypt.compareSync(req.body.password, resultLogin.password)) {
+  if ( resultLogin.password !== req.body.password) {
     res.send({message: 'bad password'})
+  } else {
+    res.send({message: 'OK'})
   }
-  const token = jwt.sign({data: resultLogin}, 'secret_code');
-  res.send({message: 'ok'});
+
 })
 app.post('/register', async (req, res) => {
   var candidat = new Candidat();
-  candidat.firstname = req.body.firstname;
-  candidat.lastname = req.body.lastname;
+  candidat.firstname = req.body.firstnameValue;
+  candidat.lastname = req.body.lastnameValue;
   resultRegister = await Candidat.findOne({email: req.body.email});
   if (!resultRegister) {
-    candidat.email = req.body.email;
-    req.body.password = bcrypt.hashSync(req.body.password, 10);
-    candidat.password = req.body.password;
+    candidat.email = req.body.emailValue;
+    req.body.password = bcrypt.hashSync(req.body.passwordValue, 10);
+    candidat.password = req.body.passwordValue;
     candidat.save((err, doc) => {
       if (!err) {
         res.send({success: "a new user is successfully added", status: 200});

@@ -11,8 +11,10 @@ export class ApiService {
   loginApi(form) {
     return this.http.post('http://localhost:3000/login', form);
   }
-  registerApi(form) {
-    console.log('************' + form);
-    return this.http.post('http://localhost:3000/register', form);
+  registerApi(data) {
+    return this.http.post('http://localhost:3000/register', data);
+  }
+  uploadFile(data) {
+    return this.http.post('http://localhost:3000/fileUpload', data);
   }
 }

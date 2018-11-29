@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-4 login-sec">
         <h2 class="text-center">Register Now</h2>
-        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="registerTest()" >
           <div class="form-group">
             <label class="text-uppercase">Firstname</label>
             <input formControlName="firstnameValue" [ngClass]="{ 'is-invalid': submitted && f.firstnameValue.errors }" type="text" class="form-control" placeholder="First name...">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="form-check">
-            <button type="submit" class="btn btn-login float-right" (click)="onSubmit()">Submit</button>
+            <button type="submit" class="btn btn-login float-right" (click)="registerTest()">Submit</button>
           </div>
         </form>
         <div class="copy-text">Created with <i class="fa fa-heart"></i> by Amen allah, Haythem and Seif</div>
